@@ -38,7 +38,7 @@ index = 25
 plt.imshow(train_set_x_orig[25])
 print("y = " + str(train_set_y[:,index]) + ", it's a '" + classes[np.squeeze(train_set_y[:,index])].decode("utf-8") + "' picture.")
 
-m_train = train_set_x_orig.shape[0]
+m_train= train_set_x_orig.shape[0]
 m_test = test_set_x_orig.shape[0]
 num_px = train_set_x_orig.shape[1]
 
@@ -187,7 +187,7 @@ def optimize(w, b, X, Y, num_iterations, learning_rate, print_cost = False):
         w = w - learning_rate * dw
         b = b - learning_rate * db
         
-        # Record the costs
+        # Record the costs after 100 iterations
         if i % 100 == 0:
             costs.append(cost)
         
