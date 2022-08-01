@@ -100,8 +100,8 @@ def backward_propagation(X,Y,cache) :
     
     #layer3
     dz1 = (1./m)*(a1-Y)
-    dW1 = np.dot(dz3,X.T)
-    db1 = np.dot(dz3,axis=1,keepdims=True)
+    dW1 = np.dot(dz1,X.T)
+    db1 = np.dot(dz1,axis=1,keepdims=True)
     
     #sanity check
     print("dz3="+dz3)
