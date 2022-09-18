@@ -91,17 +91,17 @@ def backward_propagation(X,Y,cache) :
     #layer3
     dz3 = (1./m)*(a3-Y)
     dW3 = np.dot(dz3,a2.T)
-    db3 = np.dot(dz3,axis=1,keepdims=True)
+    db3 = np.sum(dz3,axis=1,keepdims=True)
     
     #layer2
     dz2 = (1./m)*(a2-a3)
     dW2 = np.dot(dz2,a1.T)
-    db2 = np.dot(dz2,axis=1,keepdims=True)
+    db2 = np.sum(dz2,axis=1,keepdims=True)
     
     #layer3
     dz1 = (1./m)*(a1-Y)
     dW1 = np.dot(dz1,X.T)
-    db1 = np.dot(dz1,axis=1,keepdims=True)
+    db1 = np.sum(dz1,axis=1,keepdims=True)
     
     #sanity check
     print("dz3="+dz3)
@@ -136,15 +136,15 @@ def update_parameters(parameters,learning_rate,gradients) :
 
 def compute_loss(a3,Y):
     """
-Implement the loss function
-
-Arguments:
-a3 -- post-activation, output of forward propagation
-Y -- "true" labels vector, same shape as a3
-
-Returns:
-loss - value of the loss function
-"""
+    Implement the loss function
+    
+    Arguments:
+    a3 -- post-activation, output of forward propagation
+    Y -- "true" labels vector, same shape as a3
+    
+    Returns:
+    loss - value of the loss function
+    """
     m=Y.shape[1]
     loss_sum = (np.multiply(-Y,np.log(a3)) +np.multiply( -(1-Y),np.log(1-a3)))
     total_loss = 1./m*np.nansum(loss_sum)
