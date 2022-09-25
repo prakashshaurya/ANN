@@ -14,9 +14,8 @@ import h5py
 train_set_x_orig, train_set_y, test_set_x_orig, test_set_y, classes = load_dataset()
 x_train = train_set_x_orig/255.0
 x_test =test_set_x_orig/255.0
-
-
 model = tf.keras.Sequential()
+
 model.add(tf.keras.layers.Flatten(input_shape=(64,64,3)))
 model.add(tf.keras.layers.Dense(10, activation='sigmoid'))
 model.add(tf.keras.layers.Dense(2, activation='sigmoid'))

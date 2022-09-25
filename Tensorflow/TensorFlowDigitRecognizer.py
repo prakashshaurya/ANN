@@ -27,3 +27,7 @@ model.add(tf.keras.layers.Dense(10,activation='sigmoid'))
 model.compile(optimizer='adam',loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),metrics=['accuracy'])
 model.fit(xtrain,ytrain,epochs=10)
 cost,acc=model.evaluate(xtest,ytest) 
+
+#prediction 
+y_prediction = model.predict(xtest)
+digit = np.argmax(y_prediction[0])
