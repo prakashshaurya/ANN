@@ -47,20 +47,20 @@ def propagate(w, b, X, Y):
     A = sigmoid(np.dot(w.T,X)+b)                                               #broadcating function
 #over input dataset
     cost = np.sum((-1/m)*(Y*np.log(A) +(1-Y)*np.log(1-A)), keepdims = True)
-    dw = (1/m)* np.matmul(X,((A-Y).T))   #  dimension : 12288x1
-    db = (1/m)* (np.sum(A-Y , axis=1))   #  dimension : 208
+    dw   = (1/m)* np.matmul(X,((A-Y).T))   #  dimension : 12288x1
+    db   = (1/m)* (np.sum(A-Y , axis=1))   #  dimension : 208
     cost = np.squeeze(np.array(cost))  
     grads = {"dw": dw,"db": db}
     return grads, cost
 
-
+#-------------------------------------------------------------------------------
 
 def optimize(w, b, X, Y, num_iterations=100, learning_rate=0.009, print_cost=False):
     w = copy.deepcopy(w)
     b = copy.deepcopy(b)
     costs = []
     for i in range(num_iterations):
-        grads, cost =propagate(w, b, X, Y) 
+        grads, cost = propagate(w, b, X, Y) 
         dw = grads["dw"]
         db = grads["db"]
         w =w-dw*learning_rate
